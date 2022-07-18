@@ -46,7 +46,7 @@ const config = {
     },
   },
   h5: {
-    publicPath: "/",
+    publicPath: "/compound-planting",
     staticDirectory: "static",
     esnextModules: ["nutui-taro"],
     postcss: {
