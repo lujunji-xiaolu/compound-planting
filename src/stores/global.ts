@@ -10,13 +10,17 @@ export const useStore = defineStore("global", {
     spacing: 60,
     corn: {
       rows: 2,
-      HGW: 20
+      HGW: 20,
+      percentageOfNitrogen: 15,
+      pureNitrogenAmount: 3,
+      area: 0
     },
     soybean: {
       rows: 2,
-      HGW: 10
+      HGW: 10,
+      area: 0
     },
-  }) as { spacing: number, corn: Factors, soybean: Factors },
+  }) as { spacing: number, corn: Factors & { percentageOfNitrogen: number, pureNitrogenAmount: number, area: number }, soybean: Factors },
   actions: {
     updateSolution(options: ExpectedFactors) {
       const solution = optimalSolution(this.soybean.rows, this.spacing, options);

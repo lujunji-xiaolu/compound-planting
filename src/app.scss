@@ -1,4 +1,6 @@
 .container {
+  padding-top: 10px;
+  padding-bottom: 60px;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -13,4 +15,10 @@
     margin-right: 10px;
     white-space: nowrap;
   }
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -21,16 +21,12 @@ const CORN_DENSITY_WEIGHT = 0.8;
  */
 function getAllCandidates(
   soybeanRows: number,
-  options: {
-    expectedCornColumnSpacing?: number;
-    expectedSoybeanRowSpacing?: number;
-    expectedSoybeanColumnSpacing?: number;
-  }
+  options: ExpectedFactors
 ) {
   const {
     expectedCornColumnSpacing,
     expectedSoybeanRowSpacing,
-    expectedSoybeanColumnSpacing
+    expectedSoybeanColumnSpacing,
   } = options;
   const cornRowsFactor = [CORN_ROWS];
   const cornRowSpacingFactor = [CORN_ROW_SPACING];
@@ -63,12 +59,13 @@ function getAllCandidates(
  */
 function standard(
   cornDensity: number,
-  soybeanDensity: number
+  soybeanDensity: number,
+  options: ExpectedFactors
 ) {
   const soybeanDensityWeight = 1 - CORN_DENSITY_WEIGHT;
   return (
-    CORN_DENSITY_WEIGHT * Math.abs(cornDensity - BEST_CORN_DENSITY) +
-    soybeanDensityWeight * Math.abs(soybeanDensity - BEST_SOYBEAN_DENSITY)
+    CORN_DENSITY_WEIGHT * Math.abs(cornDensity - (options.expectedCornDensity ?? BEST_CORN_DENSITY)) +
+    soybeanDensityWeight * Math.abs(soybeanDensity - (options.expectedSoybeanDensity ?? BEST_SOYBEAN_DENSITY))
   );
 }
 
@@ -142,20 +139,11 @@ export function optimalSolution(
   spacing: number,
   options: ExpectedFactors
 ) {
-  const {
-    expectedCornColumnSpacing,
-    expectedSoybeanRowSpacing,
-    expectedSoybeanColumnSpacing,
-  } = options;
-  const candidates = getAllCandidates(soybeanRows, {
-    expectedCornColumnSpacing,
-    expectedSoybeanRowSpacing,
-    expectedSoybeanColumnSpacing
-  }).map(candidate => getFactors(candidate, spacing));
+  const candidates = getAllCandidates(soybeanRows, options).map(candidate => getFactors(candidate, spacing));
   
   const sortedCandidates = candidates.sort((a, b) => {
-    const standardA = standard(a.corn.density, a.soybean.density);
-    const standardB = standard(b.corn.density, b.soybean.density);
+    const standardA = standard(a.corn.density, a.soybean.density, options);
+    const standardB = standard(b.corn.density, b.soybean.density, options);
     return standardA - standardB;
   });
   const candidate = sortedCandidates[0];

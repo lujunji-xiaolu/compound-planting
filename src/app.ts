@@ -3,8 +3,6 @@ import { createPinia } from "pinia";
 import {
   Button,
   Toast,
-  Tabs,
-  TabPane,
   Icon,
   Cell,
   Range,
@@ -13,11 +11,17 @@ import {
   Col,
   Tabbar,
   TabbarItem,
-  Radio,
-  RadioGroup,
+  Grid,
+  GridItem,
+  Dialog,
+  Popup,
+  OverLay,
+  InputNumber,
+  Table,
 } from "@nutui/nutui-taro";
 
 import "./app.scss";
+import "./assets/font/iconfont.css";
 
 const pinia = createPinia();
 const App = createApp({
@@ -28,8 +32,6 @@ const App = createApp({
 App.use(pinia)
   .use(Button)
   .use(Toast)
-  .use(Tabs)
-  .use(TabPane)
   .use(Icon)
   .use(Cell)
   .use(Range)
@@ -38,7 +40,12 @@ App.use(pinia)
   .use(Col)
   .use(Tabbar)
   .use(TabbarItem)
-  .use(Radio)
-  .use(RadioGroup);
+  .use(Grid)
+  .use(GridItem)
+  .use(Dialog)
+  .use(Popup)
+  .use(OverLay)
+  .use(InputNumber)
+  .use(Table);
 
 export default App;

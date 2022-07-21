@@ -11,4 +11,6 @@ export interface ExpectedFactors {
   expectedCornColumnSpacing?: number;
   expectedSoybeanRowSpacing?: number;
   expectedSoybeanColumnSpacing?: number;
+  expectedCornDensity?: number;
+  expectedSoybeanDensity?: number;
 }

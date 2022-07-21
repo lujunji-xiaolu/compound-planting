@@ -23,21 +23,12 @@ import { getCurrentInstance, redirectTo } from "@tarojs/taro";
 const map = new Map([
   [
     "/pages/index/index",
-    { index: 0, title: "首页", icon: "home", to: "/pages/index/index" },
-  ],
-  [
-    "/pages/density/index",
-    {
-      index: 1,
-      title: "种植密度",
-      icon: "category",
-      to: "/pages/density/index",
-    },
+    { index: 0, title: "田间布局", icon: "home", to: "/pages/index/index" },
   ],
   [
     "/pages/seeding/index",
     {
-      index: 2,
+      index: 1,
       title: "播种量",
       icon: "find",
       to: "/pages/seeding/index",
@@ -46,19 +37,10 @@ const map = new Map([
   [
     "/pages/fertilizer/index",
     {
-      index: 3,
+      index: 2,
       title: "用肥量",
       icon: "cart",
       to: "/pages/fertilizer/index",
-    },
-  ],
-  [
-    "/pages/visual/index",
-    {
-      index: 4,
-      title: "可视化",
-      icon: "my",
-      to: "/pages/visual/index",
     },
   ],
 ]);

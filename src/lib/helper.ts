@@ -54,6 +54,16 @@ export function seedingRate(density: number, HGW: number) {
 }
 
 /**
+ * 计算总播种量
+ * @param seedingRate 播种量(千克/亩)
+ * @param area 播种面积(平方米)
+ * @returns 总播种量
+ */
+export function totalSeedingRate(seedingRate: number, area: number) {
+  return seedingRate * (area / MU);
+}
+
+/**
  * 计算每个播种单体10米下种量
  * 每个播种单体10米下种量=[亩播种量/亩]×[全田计产行距×10米]
  * 玉米：百粒重按30克计，每增加(减少)1克，10米下种量增加（减少）10克，1千克=1000克

@@ -1,11 +1,5 @@
 export default defineAppConfig({
-  pages: [
-    "pages/index/index",
-    "pages/density/index",
-    "pages/seeding/index",
-    "pages/fertilizer/index",
-    "pages/visual/index",
-  ],
+  pages: ["pages/index/index", "pages/seeding/index", "pages/fertilizer/index"],
   window: {
     backgroundTextStyle: "light",
     navigationBarBackgroundColor: "#fff",
